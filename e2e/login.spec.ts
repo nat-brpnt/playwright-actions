@@ -1,26 +1,26 @@
 import { test, expect, Page } from '@playwright/test';
 
-test('usuário obrigatório', async ({ page }) => {
+test('user required', async ({ page }) => {
   await login(page, '', 'senha123')
   await toast(page, 'Informe o seu nome de usuário!s')
 });
 
-test('senha obrigatória', async ({ page }) => {
+test('password required', async ({ page }) => {
   await login(page,'qa', '')
   await toast(page, 'Informe a sua senha secreta!')
 })
 
-test('usuário não existe', async ({ page }) => {
+test('user non-existing', async ({ page }) => {
   await login(page,'teste', 'teste')
   await toast(page, 'Oops! Credenciais inválidas :(')
 })
 
-test('senha incorreta', async ({ page }) => {
+test('wrong password', async ({ page }) => {
   await login(page,'qa', 'teste')
   await toast(page, 'Oops! Credenciais inválidas :(')
 })
 
-test('com sucesso', async ({ page }) => {
+test('success', async ({ page }) => {
   await login(page,'qa', 'xperience')
   await modal(page, 'Suas credenciais são válidas :)')
 })
